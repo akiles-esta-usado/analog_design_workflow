@@ -1,37 +1,45 @@
-# Ubuntu 18.04 LTS desktop box (for Vagrant)
+# Vagrant Development Environment for Open_PDKs
 
-Based on [my answer](https://stackoverflow.com/questions/18878117/using-vagrant-to-run-virtual-machines-with-desktop-environment/53363591#53363591) to a StackOverflow question (which is itself based on the other answers).
+This project is still work-in-progress.
 
-Only tested on VirtualBox.
 
-## Customize
+## Installation
 
-If you aren't using VirtualBox, or if you're fine with the default disk size of 10 GB:
+### Dependencies
 
-- Skip the plugin installation.
-- Remove the `config.disksize...` line from the Vagrantfile.
+* Vagrant
+* VirtualBox 6.1.32 (fixed in installation scripts)
 
-The keyboard layout is set to German.
-To change this, edit `install-desktop.sh`, and replace `L='de'` with your preferred keyboard layout language.
 
-## How to run it
+### Installation process
 
-```
-vagrant plugin install vagrant-disksize
+Just "compile" the vm.
 
-vagrant up 2>&1 | tee log.txt
+~~~bash
+vagrant up
+~~~
+
+## Vagrant Usage
+ 
+~~~bash
+# Start vm
+vagrant up
+
+# Reload vm
 vagrant reload
-```
 
-After the reboot, the VM screen should show the LightDM login screen.
-Log in as user "ubuntu", password "ubuntu".
+# poweroff vm
+vagrant halt
 
-Re-running the provisioners:
+# Connect ssh
+vagrant ssh
+~~~
 
-```
-# When VM is running:
-vagrant provision 2>&1 | tee log.txt
 
-# When VM is powered off:
-vagrant up --provision 2>&1 | tee log.txt
-```
+For more information, see https://gist.github.com/wpscholar/a49594e2e2b918f4d0c4
+
+
+## References
+
+Based on https://github.com/heidemn/vagrant-bionic-desktop
+

@@ -16,11 +16,20 @@ Vagrant.configure("2") do |config|
   end
 
 
+  unless Vagrant.has_plugin?("vagrant-reload")
+    puts 'Installing vagrant-reload Plugin...'
+    system('vagrant plugin install vagrant-reload')
+  end
+
+
   config.vm.provision "shell", path: "install_scripts/install-dependencies.sh"
-  config.vm.provision "shell", path: "install_scripts/install-magic.sh"
-  config.vm.provision "shell", path: "install_scripts/install-skywater-pdk.sh"
+  #config.vm.provision "shell", path: "install_scripts/install-skywater-pdk.sh"
   #config.vm.provision "shell", path: "install_scripts/install-open_pdks.sh"
+
+  config.vm.provision :reload
+
+  config.vm.provision "shell", path: "install_scripts/install-magic.sh"
   
   config.vm.provision "shell",
-    inline: "echo Vagrant has Finished"
+    inline: "echo Vagrant has finished"
 end
