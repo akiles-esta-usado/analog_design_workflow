@@ -1,0 +1,4 @@
++ mkdir -p /home/vagrant/src
++ cd /home/vagrant/src
++ git clone https://github.com/RTimothyEdwards/magic
+fatal: destination path 'magic' already exists and is not an empty directory.
