@@ -16,10 +16,10 @@ Vagrant.configure("2") do |config|
   end
 
 
-  config.vm.provision "shell", path: "install-dependencies.sh"
-  config.vm.provision "shell", path: "install-magic.sh"
-  config.vm.provision "shell", path: "install-skywater-pdk.sh"
-  #config.vm.provision "shell", path: "install-open_pdks.sh"
+  config.vm.provision "shell", path: "install_scripts/install-dependencies.sh"
+  config.vm.provision "shell", path: "install_scripts/install-magic.sh"
+  config.vm.provision "shell", path: "install_scripts/install-skywater-pdk.sh"
+  #config.vm.provision "shell", path: "install_scripts/install-open_pdks.sh"
   
   config.vm.provision "shell",
     inline: "echo Vagrant has Finished"
