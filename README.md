@@ -9,6 +9,16 @@ This project is still work-in-progress.
 
 * Vagrant
 * VirtualBox 6.1.32 (fixed in installation scripts)
+* plugin ``vagrant-vbguest``
+* plugin ``vagrant-reboot``
+
+
+~~~bash
+$ vagrant plugin install vagrant-vbguest
+$ vagrant plugin install vagrant-reload
+~~~
+
+If the plugins are not installed, the construction will fail.
 
 
 ### Installation process

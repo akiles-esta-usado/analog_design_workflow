@@ -2,7 +2,10 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+  config.vagrant.plugins = ["vagrant-reload", "vagrant-vbguest"]
+
   config.vm.box = "hashicorp/bionic64"
+
   # Optional - enlarge disk (will also convert the format from VMDK to VDI):
   #config.disksize.size = "30GB"
 
@@ -16,20 +19,18 @@ Vagrant.configure("2") do |config|
   end
 
 
-  unless Vagrant.has_plugin?("vagrant-reload")
-    puts 'Installing vagrant-reload Plugin...'
-    system('vagrant plugin install vagrant-reload')
-  end
-
 
   config.vm.provision "shell", path: "install_scripts/install-dependencies.sh"
-  #config.vm.provision "shell", path: "install_scripts/install-skywater-pdk.sh"
-  #config.vm.provision "shell", path: "install_scripts/install-open_pdks.sh"
 
   config.vm.provision :reload
 
   config.vm.provision "shell", path: "install_scripts/install-magic.sh"
+  #config.vm.provision "shell", path: "install_scripts/install-skywater-pdk.sh"
+  #config.vm.provision "shell", path: "install_scripts/install-open_pdks.sh"
+  #ng
   
+  config.vm.provision :reload
+
   config.vm.provision "shell",
-    inline: "echo Vagrant has finished"
+    inline: "VM is ready to use"
 end
