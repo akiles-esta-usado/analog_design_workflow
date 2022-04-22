@@ -2,20 +2,14 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
+
   config.vagrant.plugins = ["vagrant-reload", "vagrant-vbguest"]
 
+  # Try other distros, maybe newer ubuntu distros or centos, arch, etc.
   config.vm.box = "hashicorp/bionic64"
 
-  # Optional - enlarge disk (will also convert the format from VMDK to VDI):
-  #config.disksize.size = "30GB"
-
   config.vm.provider "virtualbox" do |vb|
-    # Display the VirtualBox GUI when booting the machine
     vb.gui = true
-    #vb.memory = 2048
-    #vb.cpus = 2
-    #vb.customize ['modifyvm', :id, '--clipboard', 'bidirectional']
-    #vb.customize ["modifyvm", :id, "--cableconnected1", "on"]
   end
 
 
@@ -25,12 +19,6 @@ Vagrant.configure("2") do |config|
   config.vm.provision :reload
 
   config.vm.provision "shell", path: "install_scripts/install-magic.sh"
-  #config.vm.provision "shell", path: "install_scripts/install-skywater-pdk.sh"
-  #config.vm.provision "shell", path: "install_scripts/install-open_pdks.sh"
-  #ng
-  
-  config.vm.provision :reload
+  config.vm.provision "shell", path: "install_scripts/install-open_pdks.sh"
 
-  config.vm.provision "shell",
-    inline: "VM is ready to use"
 end

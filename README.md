@@ -45,8 +45,11 @@ vagrant halt
 vagrant ssh
 ~~~
 
-
 For more information, see https://gist.github.com/wpscholar/a49594e2e2b918f4d0c4
+
+### User Credentials
+
+For now, user and password are "vagrant".
 
 
 ## References
